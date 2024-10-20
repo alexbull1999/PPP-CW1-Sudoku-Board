@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdio>
 #include "sudoku.h"
-#include <chrono>
 
 using namespace std;
 
@@ -52,7 +51,7 @@ int main() {
   display_board(board);
 
   // write more test
-	// this test below should be invalid
+	// this test below should be valid
 	
 	cout << "Putting '7' into A1 is ";
 	if (!make_move("A1", '7', board)) {
@@ -70,7 +69,7 @@ int main() {
 	cout << "a valid move. The board is:\n";
 	display_board(board);
 
-	// this test below should be invalid
+	// this test below should be valid
 	
 	cout << "Putting '6' into I9 is ";
 	if (!make_move("I9", '6', board)) {
@@ -79,7 +78,7 @@ int main() {
 	cout << "a valid move. The board is:\n";
 	display_board(board);
 
-	// this test should also be invalid
+	// this test should be invalid
 	
 	cout << "Putting '1' into A1 is ";
 	if (!make_move("A1", '1', board)) {
