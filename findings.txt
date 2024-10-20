@@ -1,1 +1,37 @@
 Summarise your findings here (see specification).
+
+I believe the three mystery puzzles to be the following: 
+
+mystery1.dat = 'extremely hard' difficulty
+
+mystery2.dat = impossible to solve 
+
+mystery3.dat = 'hard' difficulty
+
+These conclusions are due to the following: 
+
+Mystery2.dat was the only board my sudoku program could not solve, so that identification is relatively straightforward
+
+To judge between Mystery1.dat and Mystery3.dat, my first approach was to implement a counter to keep track of the number of times the solve_board function was called recursively for each board. This would give an indication of the level of complexity of each board.
+
+Initially this was difficult to implement as I was trying to implement a counter within the solve_board function itself; with the problem that this didn't reset back to 0 between the different boards being called.
+
+I then realised that I could take advantage of C++'s polymorphism to have two solve_board functions. One that was triggered by the calls to solve_board from main, that initialised the recursion counter to zero, before calling the "proper" solve board funnction, which uses the recursion counter as a reference parameter,incrementing it with every additional call.
+
+Doing so enabled me to see that the Mystery1 board's recursion counter stood at 421,546 recursive calls, whereas Mystery3 board's counter was only 14,133 - and hence was the far simpler board. 
+
+To double check, I had heard classmates talk about being to use a timer in C++, so looked up how to use the timer functions from the <chrono> library and implemented a clock, that started upon the first call of solve_board from main, and only finished once the board had finally been solved (or failed to be solved).
+
+The clock confirmed the recursion counter's findings, insofar as the Mystery1 board took 131.461 ms to be solved, whilst the Mystery3 board took only 4.7331 ms to solve. 
+
+A further thing I would note, however is the following: 
+
+- When testing my solve_board function on the 'medium.dat' board, my recursion counter showed 15,661 recursive calls, whilst my timer showed it took 7.33721 ms to solve. 
+Both of those are larger than their comparative values were for the Mystery3.dat board. 
+
+So perhaps the naming of Mystery3.dat as "hard" (per the spec), vs. the naming of the 'medium.dat' board as medium is misleading?
+Either the medium is also hard, or the Mystery3.dat is more of a medium board!
+
+
+
+
