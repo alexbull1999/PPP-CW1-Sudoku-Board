@@ -10,23 +10,49 @@ mystery3.dat = 'hard' difficulty
 
 These conclusions are due to the following: 
 
-Mystery2.dat was the only board my sudoku program could not solve, so that identification is relatively straightforward
+Mystery2.dat was the only board my sudoku program could not solve, so that 
+identification is relatively straightforward
 
-To judge between Mystery1.dat and Mystery3.dat, my first approach was to implement a counter to keep track of the number of times the solve_board function was called recursively for each board. This would give an indication of the level of complexity of each board.
+To judge between Mystery1.dat and Mystery3.dat, my first approach was to 
+implement a counter to keep track of the number of times the solve_board 
+function was called recursively for each board. This would give an indication 
+of the level of complexity of each board.
 
-Doing so enabled me to see that the Mystery1 board's recursion counter stood at 421,546 recursive calls, whereas Mystery3 board's counter was only 14,133 - and hence was the far simpler board. 
+Doing so enabled me to see that the Mystery1 board's recursion counter stood at
+421,546 recursive calls, whereas Mystery3 board's counter was only 14,133 - and 
+hence was the far simpler board. 
 
-To double check, I researched how to use the timer function in c++ from the <chrono> library and implemented a clock, that started upon the first call of solve_board from main, and only finished once the board had finally been solved (or failed to be solved).
+To double check, I researched how to use the timer function in c++ from the 
+<chrono> library and implemented a clock, that started upon the first call of 
+solve_board from main, and only finished once the board had finally been 
+solved (or failed to be solved).
 
-The clock confirmed the recursion counter's findings, insofar as the Mystery1 board took significantly longer to be solved. 
+The clock confirmed the recursion counter's findings, insofar as the Mystery1 
+board took significantly longer to be solved. 
 
-I did consider whether both the recursion counter or the clock was a good measure of the complexity of Sudoku board puzzle. It is worth acknowledging that the recursion depth and length of timer will not just be affected by the complexity of the board, but also by the efficiency of the program - as an inefficiently written program would lead to a longer clock time regardless of Sudoku board difficulty. 
+I did consider whether both the recursion counter or the clock was a good 
+measure of the complexity of Sudoku board puzzle. It is worth acknowledging 
+that the recursion depth and length of timer will not just be affected by the 
+complexity of the board, but also by the efficiency of the program - as an 
+inefficiently written program would lead to a longer clock time regardless of 
+Sudoku board difficulty. 
 
-Similarly, it is true that a human attempting to solve a sudoku board would not attempt to solve it entirely recursively, in the same way as the sudoku.cpp algorithm attempts to. 
+Similarly, it is true that a human attempting to solve a sudoku board would not
+attempt to solve it entirely recursively, in the same way as the sudoku.cpp 
+algorithm attempts to. 
 
 However, I still think recursion counter and timer are a good proxy of complexity because:
-a) all sudoku boards are being passed through the same program; meaning the efficiency or inefficiency of the program should be a constant between both Mystery1 and Mystery3. 
-b) whilst humans wouldn't solve the board in a similarly recursive manner to the algorithm, there are similar thought operations; in terms of trying a digit out in a particular position and then having to erase it and go back if it doesn't work with future moves. The greater the number of times the algorithm needed to step back (i.e. the greater the recursion counter), would likely correlate somewhat to the number of times a human solving the puzzle would also make a false move and need to step back. 
+a) all sudoku boards are being passed through the same program; meaning the 
+efficiency or inefficiency of the program should be a constant between both 
+Mystery1 and Mystery3. 
+b) whilst humans wouldn't solve the board in a similarly recursive manner to 
+the algorithm, there are similar thought operations; in terms of trying a digit
+out in a particular position and then having to erase it and go back if it 
+doesn't work with future moves. The greater the number of times the algorithm 
+needed to step back (i.e. the greater the recursion counter), would likely 
+correlate somewhat to the number of times a human solving the puzzle would 
+also make a false move and need to step back. 
+
 
 
 

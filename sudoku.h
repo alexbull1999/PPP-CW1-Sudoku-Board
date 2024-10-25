@@ -1,9 +1,9 @@
 #ifndef SUDOKU_H 
 #define SUDOKU_H
 
-const int MAX_FILENAME_LENGTH = 80; // global constant declared for max filename
-																		// length for Q3 (as can't assign an array
-																		// unlimited memory)
+
+/* global constant declared for max filename length for Q3 */
+const int MAX_FILENAME_LENGTH = 80; 
 
 /* pre-supplied functions */
 void load_board(const char* filename, char board[9][9]); void
